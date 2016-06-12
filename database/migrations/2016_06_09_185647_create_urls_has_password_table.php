@@ -12,7 +12,12 @@ class CreateUrlsHasPasswordTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('urls_has_password', function (Blueprint $table) {
+            $table->integer('url_id');            
+            $table->string('url_password');
+            $table->boolean('isExpired')->default(false);
+            $table->timestamp('created_at');
+        });
     }
 
     /**
@@ -22,6 +27,6 @@ class CreateUrlsHasPasswordTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('urls_has_password');
     }
 }

@@ -12,7 +12,12 @@ class CreateUrlsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('urls', function (Blueprint $table) {
+            $table->string('url');
+            $table->string('keyword')->index();
+            $table->boolean('isProtected')->default(false);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -22,6 +27,6 @@ class CreateUrlsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('urls');
     }
 }
